@@ -5,9 +5,10 @@ Credit for the idea belongs entirely to [lucastan](https://github.com/lucastan/u
 
 ###Installation
 **Make sure you have JDK/JRE and Ant installed your computer.**
-1. Clone the [uva-utility](https://github.com/andrey-yemelyanov/uva-utility.git) repo
+
+1. Clone the [uva-utility](https://github.com/andrey-yemelyanov/uva-utility.git) repo.
 2. Navigate to the project folder and run ```ant```. This will build UVA utility.
-3. Launch the application by entering ```java -jar {pathToProject}/build/jar/UvaUtility.jar```
+3. Launch the application by entering ```java -jar {pathToProject}/build/jar/UvaUtility.jar```.
 
 After launching the application you will be prompted to enter your UVA username and password. Note that the password is stored encrypted only locally on your computer. You will need to set up paths to your browser and editor. You might also have to specify proxy server.
 
