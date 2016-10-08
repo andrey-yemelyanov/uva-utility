@@ -3,7 +3,7 @@ Command-line application utility for managing code submissions to [UVA Online Ju
 
 Credit for the idea belongs entirely to [lucastan](https://github.com/lucastan/uva-node) who was the first to implement a similar tool - UVA NODE.
 
-#####Features
+###Features
 UVA Utility supports the following commands:
 
 ##### ```exit```
