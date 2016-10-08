@@ -1,7 +1,15 @@
 # uva-utility
-Command-line application utility for managing code submissions to [UVA Online Judge](https://uva.onlinejudge.org/).
+Command-line application utility for managing code submissions to [UVA Online Judge](https://uva.onlinejudge.org/). Written in Java, this application can run on all platforms.
 
 Credit for the idea belongs entirely to [lucastan](https://github.com/lucastan/uva-node) who was the first to implement a similar tool - UVA NODE.
+
+###Installation
+**Make sure you have JDK/JRE and Ant installed your computer.**
+1. Clone the [uva-utility](https://github.com/andrey-yemelyanov/uva-utility.git) repo
+2. Navigate to the project folder and run ```ant```. This will build UVA utility.
+3. Launch the application by entering ```java -jar {pathToProject}/build/jar/UvaUtility.jar```
+
+After launching the application you will be prompted to enter your UVA username and password. Note that the password is stored encrypted only locally on your computer. You will need to set up paths to your browser and editor. You might also have to specify proxy server.
 
 ###Features
 UVA Utility supports the following commands:
