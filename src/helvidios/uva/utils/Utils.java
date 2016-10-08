@@ -73,11 +73,4 @@ public class Utils{
     System.out.printf("Launching editor %s %s...\n", editorPath, filePath);
     Runtime.getRuntime().exec(new String[]{editorPath, filePath});
   }
-
-  public static String preprocessCode(String code, String lang){
-    if(lang.equals("java")){ // in java, class name must be Main for UVA to compile it
-      return code.replaceFirst("\\s*public\\s+class\\s+\\w+", "\npublic class Main");
-    }
-    return code;
-  }
 }

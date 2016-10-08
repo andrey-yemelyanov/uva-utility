@@ -34,6 +34,13 @@ public class SubmitCommand extends Command{
     uc.getUvaFacade().submitProblem(problemId, lang, preprocessCode(readFile(filePath), lang));
   }
 
+  private String preprocessCode(String code, String lang){
+    if(lang.equals("java")){ // in java, class name must be Main for UVA to compile it
+      return code.replaceFirst("\\s*public\\s+class\\s+\\w+", "\npublic class Main");
+    }
+    return code;
+  }
+
   private String problemId;
   public void execute(UserContext uc) throws Exception{
     if(hasFileExtension(problemId)){
