@@ -1,4 +1,4 @@
-<project name="UvaUtility" basedir="." default="main">
+<project name="JUva" basedir="." default="main">
 
     <property name="lib.dir" value="lib"/>
     <path id="classpath">
