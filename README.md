@@ -27,10 +27,12 @@ browser (set {browserPath} | get)
 ```
 Configures a browser to be used when e.g. viewing problems or launching discussion board for a specific problem.
 
+
 ```
 discuss {problemId}
 ```
 Launches a browser and loads a discussion board for supplied problem id.
+
 
 ```
 edit ({problemId} | {filePath})
@@ -39,62 +41,75 @@ Launches editor and loads a code file corresponding to problem id or file path. 
 
 **Note that JUva expects that all code files will contain a problem id in their name. E.g. _123_SearchingQuickly.java or 123.cpp. This is how JUva will be able to derive for which problem id you are submitting code to UVA.**
 
+
 ```
 editor (set {editorPath} | get)
 ```
 Configures editor to be used when opening problems for editing.
+
 
 ```
 exit
 ```
 Exits JUva.
 
+
 ```
 help
 ```
 Prints a list of available commands and their descriptions.
+
 
 ```
 path
 ```
 Echoes current working directory.
 
+
 ```
 proxy (set {hostname port} | get | rm)
 ```
 Configures proxy server to be used when connecting to UVA.
+
 
 ```
 stats
 ```
 Displays 3 latest UVA submissions for the current user.
 
+
 ```
 submit ({problemId} | {filePath})
 ```
 Submits a code file for specific problem id to UVA. If you supply only problem id, JUva will attempt to derive file name. If more than one file match problem id, you will be prompted to supply file name instead.
+
 
 ```
 tpl (add {tplPath} | show | rm {lang})
 ```
 Configures templates for new code files. E.g. 'template.cpp' identifies a template that will be applied when a new C++ file is created.
 
+
 ```
 udebug {problemId}
 ```
 Launches a browser and loads UDebug for supplied problem id.
+
 
 ```
 use {username}
 ```
 Changes current user context (username and password) that will be used when communicating with UVA and UHunt.
 
+
 ```
 users (add {username} | show | rm {username})
 ```
 Manages UVA users. Users are saved as a pair (username->password). Password is stored only on your local machine using AES encryption.
 
+
 ```
 view {problemId}
 ```
 Launches a browser and loads a description for supplied problem id.
+
