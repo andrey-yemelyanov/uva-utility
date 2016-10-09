@@ -18,8 +18,11 @@ Once you initialized JUva with your UVA username/password, JUva will remember th
 ###Features
 UVA Utility supports the following commands:
 
-##### ```browser (set {browserPath} | get)```
+```
+browser (set {browserPath} | get)
+```
 Configures a browser to be used when e.g. viewing problems or launching discussion board for a specific problem.
+================================
 
 ##### ```discuss {problemId}```
 Launches a browser and loads a discussion board for supplied problem id.
