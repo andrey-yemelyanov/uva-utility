@@ -16,7 +16,7 @@ After launching the application you will be prompted to enter your UVA username 
 Once you initialized JUva with your UVA username/password, JUva will remember those and use them next time you launch the application.
 
 ###Features
-UVA Utility supports the following commands:
+JUva supports the following commands:
 
 ```
 browser (set {browserPath} | get)
@@ -28,13 +28,15 @@ Configures a browser to be used when e.g. viewing problems or launching discussi
 Launches a browser and loads a discussion board for supplied problem id.
 
 ##### ```edit ({problemId} | {filePath})```
-Launches editor and loads a code file corresponding to problem id or file path.
+Launches editor and loads a code file corresponding to problem id or file path. If the file does not exist, it will be created using a template (if any). Currently JUva allows working with the files that have extension: cpp, cpp11, java, c, py, pas.
+
+**Note that JUva expects that all code files will contain a problem id in their name. E.g. _123_SearchingQuickly.java or 123.cpp. This is how JUva will be able to derive for which problem id you are submitting code to UVA.**
 
 ##### ```editor (set {editorPath} | get)```
 Configures editor to be used when opening problems for editing.
 
 ##### ```exit```
-Exits UVA utility.
+Exits JUva.
 
 ##### ```help```
 Prints a list of available commands and their descriptions.
@@ -49,8 +51,8 @@ Configures proxy server to be used when connecting to UVA.
 Displays 3 latest UVA submissions for the current user.
 
 ##### ```submit ({problemId} | {filePath})```
+Submits a code file for specific problem id to UVA. If you supply only problem id, JUva will attempt to derive file name. If more than one file match problem id, you will be prompted to supply file name instead.
 
-Submits a code file for specific problem id to UVA.
 ##### ```tpl (add {tplPath} | show | rm {lang})```
 Configures templates for new code files. E.g. 'template.cpp' identifies a template that will be applied when a new C++ file is created.
 
