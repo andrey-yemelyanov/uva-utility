@@ -4,6 +4,7 @@ A Java-based command-line utility for managing code submissions to [UVA Online J
 Credit for the idea belongs entirely to **lucastan** who was the first to implement a similar tool - [UVA NODE](https://github.com/lucastan/uva-node).
 
 Installation
+--------------------------
 
 **Make sure you have JDK/JRE and Ant installed your computer.**
 
@@ -17,6 +18,7 @@ After launching the application you will be prompted to enter your UVA username 
 Once you initialized JUva with your UVA username/password, JUva will remember those and use them next time you launch the application.
 
 Features
+------------------------------
 
 JUva supports the following commands:
 
