@@ -27,6 +27,8 @@ Launches a browser and loads a discussion board for supplied problem id.
 ##### ```edit ({problemId} | {filePath})```
 Launches editor and loads a code file corresponding to problem id or file path. If the file does not exist, it will be created using a template (if any). Currently JUva allows working with the files that have extension: cpp, cpp11, java, c, py, pas.
 
+**Note that JUva expects that all code files will contain a problem id in their name. E.g. _123_SearchingQuickly.java or 123.cpp. This is how JUva will be able to derive for which problem id you are submitting code to UVA.**
+
 ##### ```editor (set {editorPath} | get)```
 Configures editor to be used when opening problems for editing.
 
