@@ -7,7 +7,7 @@ Credit for the idea belongs entirely to **lucastan** who was the first to implem
 **Make sure you have JDK/JRE and Ant installed your computer.**
 
 1. Clone [uva-utility](https://github.com/andrey-yemelyanov/uva-utility.git) repo.
-2. Navigate to the project folder and run ```ant```. This will build UVA utility.
+2. Navigate to the project folder and run ```ant```. This will build JUva.
 3. Navigate to the folder where the code for your UVA problems resides.
 3. Launch the application by entering ```java -jar {pathToProject}/build/jar/JUva.jar```.
 
