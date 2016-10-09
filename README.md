@@ -16,7 +16,7 @@ After launching the application you will be prompted to enter your UVA username 
 Once you initialized JUva with your UVA username/password, JUva will remember those and use them next time you launch the application.
 
 ###Features
-UVA Utility supports the following commands:
+JUva supports the following commands:
 
 ##### ```browser (set {browserPath} | get)```
 Configures a browser to be used when e.g. viewing problems or launching discussion board for a specific problem.
@@ -31,7 +31,7 @@ Launches editor and loads a code file corresponding to problem id or file path.
 Configures editor to be used when opening problems for editing.
 
 ##### ```exit```
-Exits UVA utility.
+Exits JUva.
 
 ##### ```help```
 Prints a list of available commands and their descriptions.
