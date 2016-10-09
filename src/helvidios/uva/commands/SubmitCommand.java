@@ -27,10 +27,10 @@ public class SubmitCommand extends Command{
   private void submitFile(String filePath, UserContext uc) throws Exception {
     String lang = getFileExtension(filePath);
     if(!isSupportedLang(lang)) throw new Exception(
-      String.format("Language extension %s is not supported. Supported extensions: %s.", lang, supportedLangs())
+      String.format("Language extension '%s' is not supported. Supported extensions: %s.", lang, supportedLangs())
     );
     String problemId = getFileName(filePath).replaceAll("\\D+","");
-    System.out.printf("Submitting file %s (problemId=%s, lang=%s)...\n", filePath, problemId, lang);
+    System.out.printf("Submitting file '%s' (problemId=%s, lang=%s)...\n", filePath, problemId, lang);
     uc.getUvaFacade().submitProblem(problemId, lang, preprocessCode(readFile(filePath), lang));
   }
 
