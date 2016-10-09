@@ -38,75 +38,64 @@ edit ({problemId} | {filePath})
 Launches editor and loads a code file corresponding to problem id or file path. If the file does not exist, it will be created using a template (if any). Currently JUva allows working with the files that have extension: cpp, cpp11, java, c, py, pas.
 
 **Note that JUva expects that all code files will contain a problem id in their name. E.g. _123_SearchingQuickly.java or 123.cpp. This is how JUva will be able to derive for which problem id you are submitting code to UVA.**
-***
+___
 ```
 editor (set {editorPath} | get)
 ```
 Configures editor to be used when opening problems for editing.
-
-
+___
 ```
 exit
 ```
 Exits JUva.
-
-
+___
 ```
 help
 ```
 Prints a list of available commands and their descriptions.
-
-
+___
 ```
 path
 ```
 Echoes current working directory.
-
-
+___
 ```
 proxy (set {hostname port} | get | rm)
 ```
 Configures proxy server to be used when connecting to UVA.
-
-
+___
 ```
 stats
 ```
 Displays 3 latest UVA submissions for the current user.
-
-
+___
 ```
 submit ({problemId} | {filePath})
 ```
 Submits a code file for specific problem id to UVA. If you supply only problem id, JUva will attempt to derive file name. If more than one file match problem id, you will be prompted to supply file name instead.
-
-
+___
 ```
 tpl (add {tplPath} | show | rm {lang})
 ```
 Configures templates for new code files. E.g. 'template.cpp' identifies a template that will be applied when a new C++ file is created.
-
-
+___
 ```
 udebug {problemId}
 ```
 Launches a browser and loads UDebug for supplied problem id.
-
-
+___
 ```
 use {username}
 ```
 Changes current user context (username and password) that will be used when communicating with UVA and UHunt.
-
-
+___
 ```
 users (add {username} | show | rm {username})
 ```
 Manages UVA users. Users are saved as a pair (username->password). Password is stored only on your local machine using AES encryption.
-
-
+___
 ```
 view {problemId}
 ```
 Launches a browser and loads a description for supplied problem id.
-
+___
