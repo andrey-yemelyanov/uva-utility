@@ -5,9 +5,12 @@ import java.util.*;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 import java.io.Console;
+import java.io.IOException;
 import org.apache.log4j.Logger;
 
 public class Utils{
+  private static final Logger logger = Logger.getLogger(Utils.class);
+
   private static final Map<String, Integer> supportedLangs = new HashMap<String, Integer>();
   static{
     supportedLangs.put("c", 1);
@@ -57,20 +60,33 @@ public class Utils{
   }
 
   public static void launchBrowser(KeyValueStore browserSettings, String url) throws Exception{
-    String browserPath = browserSettings.get("browser");
     if(!browserSettings.containsKey("browser")) throw new CommandExecutionException(
       "Browser path is not defined. Use set-browser {browserPath}."
     );
-    System.out.printf("Launching browser %s %s...\n", browserPath, url);
-    Runtime.getRuntime().exec(new String[]{browserPath, url});
+    String path = browserSettings.get("browser");
+    try{
+      launchProcess(path, url);
+    }catch(IOException ex){
+      logger.error(String.format("Path=%s, url=%s\n%s\n", path, url, getStackTrace(ex)));
+      throw new Exception(String.format("Unable to launch browser from path %s and url %s.", path, url));
+    }
   }
 
   public static void launchEditor(KeyValueStore editorPathSettings, String filePath) throws Exception{
-    String editorPath = editorPathSettings.get("editor");
-    if(editorPath == null || editorPath.isEmpty()) throw new CommandExecutionException(
+    if(!editorPathSettings.containsKey("editor")) throw new CommandExecutionException(
       "Editor path is not defined. Use set-editor {editorPath}."
     );
-    System.out.printf("Launching editor %s %s...\n", editorPath, filePath);
-    Runtime.getRuntime().exec(new String[]{editorPath, filePath});
+    String path = editorPathSettings.get("editor");
+    try{
+      launchProcess(path, filePath);
+    }catch(IOException ex){
+      logger.error(String.format("Path=%s, filePath=%s\n%s\n", path, filePath, getStackTrace(ex)));
+      throw new Exception(String.format("Unable to launch editor from path %s and file path %s.", path, filePath));
+    }
+  }
+
+  private static void launchProcess(String path, String args) throws IOException {
+    System.out.printf("Launching %s %s...\n", path, args);
+    Runtime.getRuntime().exec(new String[]{ path, args});
   }
 }
