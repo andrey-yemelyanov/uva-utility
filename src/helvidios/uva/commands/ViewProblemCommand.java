@@ -24,9 +24,6 @@ public class ViewProblemCommand extends Command {
   }
 
   public void execute(UserContext uc) throws Exception{
-    int id = Integer.parseInt(problemId);
-    String url = String.format(
-      "https://uva.onlinejudge.org/external/%d/%d.pdf", id / 100, id);
-    launchBrowser(browserSettings, url);
+    launchBrowser(browserSettings, getProblemUrl(problemId));
   }
 }

@@ -6,12 +6,17 @@ import static helvidios.uva.utils.FileUtils.*;
 import static helvidios.uva.utils.Utils.*;
 import helvidios.uva.commands.exceptions.*;
 import java.util.*;
+import org.apache.log4j.Logger;
 
 public class EditCommand extends Command{
+  private static final Logger logger = Logger.getLogger(EditCommand.class);
+
+  private UhuntFacade uhunt;
   private KeyValueStore editorPathSettings;
   private Template template;
-  public EditCommand(KeyValueStore editorPathSettings, KeyValueStore templateSettings){
+  public EditCommand(KeyValueStore editorPathSettings, KeyValueStore templateSettings, UhuntFacade uhunt){
     this.editorPathSettings = editorPathSettings;
+    this.uhunt = uhunt;
     template = new Template(templateSettings);
     this.name = "edit";
     this.usage = name + " ({problemId} | {filePath})";
@@ -27,16 +32,34 @@ public class EditCommand extends Command{
     return this;
   }
 
+  private String applyTemplate(String lang, String filePath, String username) throws Exception {
+    Map<Template.Variable, String> vars = new HashMap<>();
+    vars.put(Template.Variable.USERNAME, username);
+    vars.put(Template.Variable.PROBLEM_ID, getFileName(filePath));
+    vars.put(Template.Variable.PROBLEM_URL, getProblemUrl(getProblemId(filePath)));
+    vars.put(Template.Variable.PROBLEM_NAME, getProblemName(getProblemId(filePath)));
+    return template.apply(lang, vars);
+  }
+
+  private String getProblemName(String problemId){
+    String name = "";
+    try{
+      name = uhunt.getProblemName(problemId);
+    }catch(Exception ex){
+      logger.error(String.format("Unable to get name for problemId %s. \n%s",
+        problemId, getStackTrace(ex)));
+    }
+    return name;
+  }
+
   public void execute(UserContext uc) throws Exception{
     if(hasFileExtension(problemId)){
       if(!fileExists(problemId)){
         String lang = getFileExtension(problemId);
         if(!isSupportedLang(lang)) throw new Exception(
-          String.format("Language extension %s is not supported. Supported extensions: %s.", lang, supportedLangs())
+          String.format("Language extension '%s' is not supported. Supported extensions: %s.", lang, supportedLangs())
         );
-        // apply template (if any) to the file
-        String contents = template.apply(lang, getFileName(problemId));
-        writeFile(problemId, contents);
+        writeFile(problemId, applyTemplate(lang, problemId, uc.getUser().getUsername()));
       }
       launchEditor(editorPathSettings, problemId);
     }else{

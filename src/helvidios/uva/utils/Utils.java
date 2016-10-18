@@ -89,4 +89,13 @@ public class Utils{
     System.out.printf("Launching %s %s...\n", path, args);
     Runtime.getRuntime().exec(new String[]{ path, args});
   }
+
+  public static String getProblemUrl(String problemId){
+    int id = Integer.parseInt(problemId);
+    return String.format("https://uva.onlinejudge.org/external/%d/%d.pdf", id / 100, id);
+  }
+
+  public static String getProblemId(String filePath){
+    return filePath.replaceAll("\\D+","");
+  }
 }
