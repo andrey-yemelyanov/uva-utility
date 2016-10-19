@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 public class Utils{
   private static final Logger logger = Logger.getLogger(Utils.class);
 
-  private static final Map<String, Integer> supportedLangs = new HashMap<String, Integer>();
+  private static final Map<String, Integer> supportedLangs = new HashMap<>();
   static{
     supportedLangs.put("c", 1);
     supportedLangs.put("java", 2);
