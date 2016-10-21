@@ -37,7 +37,7 @@ edit ({problemId} | {filePath})
 ```
 Launches editor and loads a code file corresponding to problem id or file path. If the file does not exist, it will be created using a template (if any). Currently JUva allows working with the files that have extension: cpp, cpp11, java, c, py, pas.
 
-**Note that JUva expects that all code files will contain a problem id in their name. E.g. _123_SearchingQuickly.java or 123.cpp. This is how JUva will be able to derive for which problem id you are submitting code to UVA.**
+**Note that JUva expects that all code files will contain a problem id in their name. E.g. _123_SearchingQuickly.java or 123.cpp. This is how JUva will be able to infer for which problem id you are submitting code to UVA.**
 ___
 ```
 editor (set {editorPath} | get)
@@ -78,6 +78,53 @@ ___
 tpl (add {tplPath} | show | rm {lang})
 ```
 Configures templates for new code files. E.g. 'template.cpp' identifies a template that will be applied when a new C++ file is created.
+
+Template engine currently supports the following dynamic variables:
+
+* **##problem_id##** - replaced with file name without extension.
+* **##problem_url##** - replaced with the URL to the problem pdf file on UVA judge.
+* **##problem_name##** - replaced with problem name.
+* **##username##** - replaced with name of the user who created the file.
+
+Here is an example Java template I have on my computer under the name JavaTemplate.java
+
+```java
+import java.util.*;
+import static java.lang.Math.*;
+import java.util.stream.*;
+
+/*
+Problem name: ##problem_name##
+Problem url: ##problem_url##
+Author: ##username##
+*/
+public class ##problem_id## {
+  public static void main(String[] args){
+    Scanner s = new Scanner(System.in);
+
+  }
+}
+```
+
+Suppose you I want to create a new Java file with code for problem [11957 - Checkers](https://uva.onlinejudge.org/external/119/11957.pdf). I will start by typing ```edit _11957.java```. JUva will then create a new file with that name and apply the above-mentioned template. Note how file name begins with the underscore character. This is because Java does not allow creating classes whose name begins with a numeric character. The following file content will be created:
+
+```java
+import java.util.*;
+import static java.lang.Math.*;
+import java.util.stream.*;
+
+/*
+Problem name: 11957 Checkers
+Problem url: https://uva.onlinejudge.org/external/119/11957.pdf
+Author: yemelyanov
+*/
+public class _11957 {
+  public static void main(String[] args){
+    Scanner s = new Scanner(System.in);
+
+  }
+}
+```
 ___
 ```
 udebug {problemId}
