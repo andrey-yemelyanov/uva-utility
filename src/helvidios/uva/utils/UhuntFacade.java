@@ -50,6 +50,13 @@ public class UhuntFacade{
     return problem.getInt("num") + " " + problem.getString("title");
   }
 
+  public String getFullName(String username) throws Exception {
+    String userId = getUserId(username);
+    String url = String.format("%s/subs-user-last/%s/0", baseUrl, userId);
+    JSONObject json = new JSONObject(httpClient.doGet(url));
+    return json.getString("name");
+  }
+
   public List<String> getLatestSubs(String username) throws Exception {
     String userId = getUserId(username);
     String url = String.format("%s/subs-user-last/%s/%d", baseUrl, userId, N_SUBS_TO_SHOW);

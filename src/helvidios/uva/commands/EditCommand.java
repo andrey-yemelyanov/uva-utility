@@ -34,7 +34,7 @@ public class EditCommand extends Command{
 
   private String applyTemplate(String lang, String filePath, String username) throws Exception {
     Map<Template.Variable, String> vars = new HashMap<>();
-    vars.put(Template.Variable.USERNAME, username);
+    vars.put(Template.Variable.USERNAME, getFullName(username));
     vars.put(Template.Variable.PROBLEM_ID, getFileName(filePath));
     vars.put(Template.Variable.PROBLEM_URL, getProblemUrl(getProblemId(filePath)));
     vars.put(Template.Variable.PROBLEM_NAME, getProblemName(getProblemId(filePath)));
@@ -48,6 +48,17 @@ public class EditCommand extends Command{
     }catch(Exception ex){
       logger.error(String.format("Unable to get name for problemId %s. \n%s",
         problemId, getStackTrace(ex)));
+    }
+    return name;
+  }
+
+  private String getFullName(String username){
+    String name = "";
+    try{
+      name = uhunt.getFullName(username);
+    }catch(Exception ex){
+      logger.error(String.format("Unable to get full name for user %s. \n%s",
+        username, getStackTrace(ex)));
     }
     return name;
   }
