@@ -11,7 +11,16 @@ Installation
 1. Clone [uva-utility](https://github.com/andrey-yemelyanov/uva-utility.git) repo.
 2. Navigate to the project folder and run ```ant```. This will build JUva.
 3. Navigate to the folder where the code for your UVA problems resides.
-3. Launch the application by entering ```java -jar {pathToProject}/build/jar/JUva.jar```.
+3. Launch the application by entering ```java -jar {pathToProject}/build/jar/JUva.jar```. 
+
+You might want to create a bash script that will launch JUva without needing to specify the java command. Here is **juva.bat** script on my Windows machine that starts up JUva.
+
+```
+@echo off
+java -jar C:\uva-utility\build\jar\JUva.jar
+```
+
+Just add the folder where the script is located to your PATH environment variable and type **juva** in your command prompt to launch JUva.
 
 After launching the application you will be prompted to enter your UVA username and password. Note that the password is stored encrypted, only locally, on your computer. You will need to set up paths to your browser and editor. You might also have to specify proxy server.
 
