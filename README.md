@@ -116,7 +116,7 @@ import java.util.stream.*;
 /*
 Problem name: 11957 Checkers
 Problem url: https://uva.onlinejudge.org/external/119/11957.pdf
-Author: yemelyanov
+Author: Andrey Yemelyanov
 */
 public class _11957 {
   public static void main(String[] args){
